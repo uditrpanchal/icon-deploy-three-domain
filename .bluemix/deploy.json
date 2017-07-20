@@ -1,0 +1,391 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "messages": {
+        "$i18n": "locales.yml"
+    },
+    "title": {
+        "$ref": "#/messages/deploy.title"
+    },
+    "description": {
+        "$ref": "#/messages/deploy.description"
+    },
+    "longDescription": {
+        "$ref": "#/messages/deploy.longDescription"
+    },
+    "type": "object",
+    "properties": {
+        "prod-region": {
+            "description": "The bluemix region",
+            "type": "string"
+        },
+        "prod-organization": {
+            "description": "The bluemix org",
+            "type": "string"
+        },
+        "prod-space": {
+            "description": "The bluemix space",
+            "type": "string"
+        },
+        "icon-domain": {
+            "description": "Domain to use for deployed apps",
+            "type": "string"
+        },
+        "frontend-nginx-app-name": {
+            "description": {
+                "$ref": "#/messages/deploy.appDescription"
+            },
+            "type": "string",
+            "pattern": "\\S"
+        },
+        "dhir-nginx-app-name": {
+            "description": {
+                "$ref": "#/messages/deploy.appDescription"
+            },
+            "type": "string",
+            "pattern": "\\S"
+        },
+        "kibana-app-name": {
+            "description": {
+                "$ref": "#/messages/deploy.appDescription"
+            },
+            "type": "string",
+            "pattern": "\\S"
+        },
+        "server-app-name": {
+            "description": {
+                "$ref": "#/messages/deploy.appDescription"
+            },
+            "type": "string",
+            "pattern": "\\S"
+        },
+        "server-worker-app-name": {
+            "description": {
+                "$ref": "#/messages/deploy.appDescription"
+            },
+            "type": "string",
+            "pattern": "\\S"
+        },
+        "clamav-app-name": {
+            "description": {
+                "$ref": "#/messages/deploy.appDescription"
+            },
+            "type": "string",
+            "pattern": "\\S"
+        },
+        "crypto-password": {
+            "description": "message encrtion token",
+            "type": "string"
+        },
+        "jwt-secret": {
+            "description": "jwt token",
+            "type": "string"
+        },
+        "endpoint_dictionary": {
+            "description": "dictionary service api endpoint(leave as default unless specified otherwise)",
+            "type": "string"
+        },
+        "endpoint_retrieval": {
+            "description": "retrieval api endpoint(leave as default unless specified otherwise)",
+            "type": "string"
+        },
+        "endpoint_retrieval_token": {
+            "description": "retrieval token",
+            "type": "string"
+        },
+        "endpoint_submission": {
+            "description": "submission api endpoint(leave as default unless specified otherwise)",
+            "type": "string"
+        },
+        "endpoint_submission_token": {
+            "description": "submission token",
+            "type": "string"
+        },
+        "postgres_readonly_role": {
+            "description": "postgres read only role",
+            "type": "string"
+        },
+        "tz": {
+            "description": "Timezone",
+            "type": "string"
+        },
+        "front_end_hostnames":{
+            "description": "a list of hostnames seperated by commas, which will be assigned to icon front end at deployment",
+            "type":"string"
+        },
+        "front_end_domain":{
+            "description": "ICONR2 front facing domain",
+            "type":"string"
+        },
+        "endpoint_pin_admin_token":{
+              "description": "admin endpoint token",
+            "type":"string"
+        },
+        "endpoint_pin_admin":{
+              "description": "admin endpoint",
+            "type":"string"
+        }
+
+
+    },
+    "required": [
+        "prod-region",
+        "prod-organization",
+        "prod-space",
+        "frontend-nginx-app-name",
+        "dhir-nginx-app-name",
+        "kibana-app-name",
+        "server-app-name",
+        "server-worker-app-name",
+        "clamav-app-name",
+        "icon-domain",
+        "tz",
+        "postgres_readonly_role",
+        "endpoint_submission_token",
+        "endpoint_submission",
+        "endpoint_retrieval_token",
+        "endpoint_retrieval",
+        "endpoint_dictionary",
+        "jwt-secret",
+        "crypto-password",
+        "front_end_hostnames",
+        "endpoint_pin_admin",
+        "endpoint_pin_admin_token",
+        "front_end_domain"
+    ],
+    "form": [
+        {
+            "type": "validator",
+            "url": "/devops/setup/bm-helper/helper.html"
+        },
+        {
+            "type": "text",
+            "readonly": false,
+            "title": {
+                "$ref": "#/messages/deploy.crypto-password"
+            },
+            "key": "crypto-password"
+        },
+        {
+            "type": "text",
+            "readonly": false,
+            "title": {
+                "$ref": "#/messages/deploy.jwt-secret"
+            },
+            "key": "jwt-secret"
+        },
+        {
+            "title": {
+                "$ref": "#/messages/deploy.endpoint_retrieval_token"
+            },
+            "type": "text",
+            "key": "endpoint_retrieval_token"
+        },
+        {
+            "title": {
+                "$ref": "#/messages/deploy.endpoint_submission_token"
+            },
+            "type": "text",
+            "key": "endpoint_submission_token"
+        },
+        {
+            "title": {
+                "$ref": "#/messages/deploy.endpoint_pin_admin_token"
+            },
+            "type": "text",
+            "key": "endpoint_pin_admin_token"
+        },
+        {
+            "type": "text",
+            "readonly": false,
+            "title": {
+                "$ref": "#/messages/deploy.postgres_readonly_role"
+            },
+            "key": "postgres_readonly_role"
+        },
+        {
+            "title": {
+                "$ref": "#/messages/deploy.endpoint_retrieval"
+            },
+            "type": "text",
+            "key": "endpoint_retrieval"
+        },
+        {
+            "title": {
+                "$ref": "#/messages/deploy.endpoint_submission"
+            },
+            "type": "text",
+            "key": "endpoint_submission"
+        },
+        {
+            "title": {
+                "$ref": "#/messages/deploy.endpoint_pin_admin"
+            },
+            "type": "text",
+            "key": "endpoint_pin_admin"
+        },
+        {
+            "title": {
+                "$ref": "#/messages/deploy.endpoint_dictionary"
+            },
+            "type": "text",
+            "key": "endpoint_dictionary"
+        },
+        {
+            "type": "text",
+            "readonly": false,
+            "title": {
+                "$ref": "#/messages/deploy.tz"
+            },
+            "key": "tz"
+        },
+        {
+            "type":"text",
+            "readonly":false,
+            "title":{
+                "$ref":"#/messages/deploy.front_end_hostnames"
+            },
+            "key":"front_end_hostnames"
+        },
+        {
+            "type":"text",
+            "readonly":false,
+            "title":{
+                "$ref":"#/messages/deploy.front_end_domain"
+            },
+            "key":"front_end_domain"
+        }
+        ,
+        {
+            "type": "text",
+            "readonly": false,
+            "title": {
+                "$ref": "#/messages/icon-domain"
+            },
+            "key": "icon-domain"
+        },
+        {
+            "type": "table",
+            "columnCount": 2,
+            "widths": [
+                "50%",
+                "50%"
+            ],
+            "items": [
+                {
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/deploy.appName.frontend-nginx"
+                    }
+                },
+                {
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/deploy.appName.dhir-nginx"
+                    }
+                },
+                {
+                    "type": "text",
+                    "key": "frontend-nginx-app-name"
+                },
+                {
+                    "type": "text",
+                    "key": "dhir-nginx-app-name"
+                },
+                {
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/deploy.appName.kibana"
+                    }
+                },
+                {
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/deploy.appName.server"
+                    }
+                },
+                {
+                    "type": "text",
+                    "key": "kibana-app-name"
+                },
+                {
+                    "type": "text",
+                    "readonly": false,
+                    "key": "server-app-name"
+                },
+                {
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/deploy.appName.server-worker"
+                    }
+                },
+                {
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/deploy.appName.clamav"
+                    }
+                },
+                {
+                    "type": "text",
+                    "key": "server-worker-app-name"
+                },
+                {
+                    "type": "text",
+                    "key": "clamav-app-name"
+                }
+            ]
+        },
+        {
+            "type": "table",
+            "columnCount": 4,
+            "widths": [
+                "15%",
+                "28%",
+                "28%",
+                "28%"
+            ],
+            "items": [
+                {
+                    "type": "label",
+                    "title": ""
+                },
+                {
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/region"
+                    }
+                },
+                {
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/organization"
+                    }
+                },
+                {
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/space"
+                    }
+                },
+                {
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/prodStage"
+                    }
+                },
+                {
+                    "type": "select",
+                    "key": "prod-region"
+                },
+                {
+                    "type": "select",
+                    "key": "prod-organization"
+                },
+                {
+                    "type": "select",
+                    "key": "prod-space",
+                    "readonly": false
+                }
+            ]
+        }
+    ]
+}
