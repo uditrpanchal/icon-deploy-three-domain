@@ -9,10 +9,18 @@ stages:
   triggers:
   - type: stage
     enabled: false
+  properties:
+  - name: GET_CERT
+    type: text_area
+    value: ${GET_CERT}
   jobs:
   - name: Build
     type: builder
     artifact_dir: ''
+    build_type: shell
+    script: |
+      #!/bin/bash
+      echo "$GET_CERT" > getcert.sh
 - name: Deploy server
   inputs:
   - type: job
@@ -23,9 +31,6 @@ stages:
   - name: ICON_DOMAIN
     type: text
     value: ${ICON_DOMAIN}
-  - name: GET_CERT
-    type: text_area
-    value: ${GET_CERT}
   jobs:
   - name: Deploy server
     type: deployer
@@ -37,7 +42,6 @@ stages:
     script: |-
       #!/bin/bash
       # getting credential of elasticsearch
-      echo "$GET_CERT" > getcert.sh
       source getcert.sh
       getcert
       cf push ${CF_APP} -d ${ICON_DOMAIN} -n ${CF_APP} -f bluemix/base-main-manifest.yml --no-start
@@ -51,7 +55,6 @@ stages:
     script: |-
       #!/bin/bash
       # getting credential of elasticsearch
-      echo "$GET_CERT" > getcert.sh
       source getcert.sh
       getcert
       cf push ${CF_APP} -f bluemix/base-worker-manifest.yml  --no-start
