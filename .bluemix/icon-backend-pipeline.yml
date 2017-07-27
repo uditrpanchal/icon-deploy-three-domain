@@ -31,9 +31,6 @@ stages:
   - name: ICON_DOMAIN
     type: text
     value: ${ICON_DOMAIN}
-  - name: GET_CERT
-    type: text_area
-    value: ${GET_CERT}
   jobs:
   - name: Deploy server
     type: deployer
