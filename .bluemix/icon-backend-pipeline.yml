@@ -9,20 +9,10 @@ stages:
   triggers:
   - type: stage
     enabled: false
-  properties:
-  - name: BLUE_GREEN
-    type: text_area
-    value: ${DEPLOY_SCRIPT}
   jobs:
   - name: Build
     type: builder
     artifact_dir: ''
-    build_type: shell
-    script: |
-      #!/bin/bash
-      # your script here
-      echo "${BLUE_GREEN}" > blue_green.sh
-      chmod a+x blue_green.sh
 - name: Deploy server
   inputs:
   - type: job
@@ -45,7 +35,7 @@ stages:
       #!/bin/bash
       # getting credential of elasticsearch
       cf service-key icon-elasticsearch Credential1 | grep ca_certificate_base64 | cut -d ':' -f 2 | tr -d "\", \n"  | base64 --decode > cert.pem
-      ./blue_green.sh -d ${ICON_DOMAIN} -n ${CF_APP} -f bluemix/base-main-manifest.yml --no-start
+      cf push ${CF_APP} -d ${ICON_DOMAIN} -n ${CF_APP} -f bluemix/base-main-manifest.yml --no-start
   - name: Deploy worker
     type: deployer
     target:
@@ -57,7 +47,7 @@ stages:
       #!/bin/bash
       # getting credential of elasticsearch
       cf service-key icon-elasticsearch Credential1 | grep ca_certificate_base64 | cut -d ':' -f 2 | tr -d "\", \n"  | base64 --decode > cert.pem
-      ./blue_green.sh -f bluemix/base-worker-manifest.yml  --no-start
+      cf push ${CF_APP} -f bluemix/base-worker-manifest.yml  --no-start
 - name: Configure server
   inputs:
   - type: job

@@ -24,9 +24,6 @@ stages:
   triggers:
   - type: stage
   properties:
-  - name: BLUE_GREEN
-    type: text_area
-    value: ${DEPLOY_SCRIPT}
   - name: ICON_DOMAIN
     type: text
     value: ${ICON_DOMAIN}
@@ -42,11 +39,8 @@ stages:
       #!/bin/bash
       # get certificate
       cf service-key icon-elasticsearch Credential1 | grep ca_certificate_base64 | cut -d ':' -f 2 | tr -d "\", \n"  | base64 --decode > cert.pem
-      echo "${BLUE_GREEN}" > blue_green.sh
-      chmod +x blue_green.sh
-      ./blue_green.sh -f bluemix/base-manifest.yml -n ${CF_APP} -d ${ICON_DOMAIN} --no-start
+      cf push ${CF_APP} -f bluemix/base-manifest.yml -n ${CF_APP} -d ${ICON_DOMAIN} --no-start
       # set certificate
-
       cf set-env ${CF_APP} NODE_EXTRA_CA_CERTS cert.pem
       cf start ${CF_APP}
 hooks:

@@ -23,9 +23,6 @@ stages:
   - name: ICON_DOMAIN
     type: text
     value: ${ICON_DOMAIN}
-  - name: BLUE_GREEN
-    type: text_area
-    value: ${DEPLOY_SCRIPT}
   - name: ICON_SERVER_NAME
     type: text
     value: ${ICON_SERVER_NAME}
@@ -48,10 +45,7 @@ stages:
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash    
-      echo "${BLUE_GREEN}" > blue_green.sh
-      chmod +x blue_green.sh
-
-      ./blue_green.sh  -f bluemix/base-manifest.yml --no-start --no-route
+      cf push ${CF_APP}  -f bluemix/base-manifest.yml --no-start --no-route
 
       for i in $(echo $HOSTNAMES | tr ',' ' ')
       do

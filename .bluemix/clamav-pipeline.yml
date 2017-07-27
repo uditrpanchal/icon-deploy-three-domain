@@ -20,9 +20,6 @@ stages:
     job: Build
     dir_name: null
   properties:
-  - name: BLUE_GREEN
-    type: text_area
-    value: ${DEPLOY_SCRIPT}
   - name: ICON_DOMAIN
     type: text
     value: ${ICON_DOMAIN}
@@ -38,10 +35,7 @@ stages:
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
-      
-      echo "${BLUE_GREEN}" > blue_green.sh
-      chmod +x blue_green.sh
-      ./blue_green.sh -n ${CF_APP} -d ${ICON_DOMAIN} -f bluemix/base-manifest.yml
+      cf push ${CF_APP} -n ${CF_APP} -d ${ICON_DOMAIN} -f bluemix/base-manifest.yml
 hooks:
 - enabled: true
   label: null
