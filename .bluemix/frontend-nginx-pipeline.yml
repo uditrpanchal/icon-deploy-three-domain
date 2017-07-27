@@ -1,10 +1,10 @@
 ---
 stages:
-- name: Build frontend
+- name: Build ICONR2 UI
   inputs:
   - service: ${SAMPLE_REPO}
     type: git
-    branch: load_testing
+    branch: master
     dir_name: null
   triggers:
   - type: stage
@@ -13,29 +13,10 @@ stages:
   - name: Build
     type: builder
     artifact_dir: ''
-- name: Test frontend
+- name: Deploy ICONR2 UI
   inputs:
   - type: job
-    stage: Build frontend
-    job: Build
-    dir_name: null
-  triggers:
-  - type: stage
-  jobs:
-  - name: Test
-    type: tester
-    script: |-
-      #!/bin/bash
-      # invoke tests here
-      export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
-      # Run unit-tests
-      npm install && npm run test-unit
-    enable_tests: true
-    test_file_pattern: test-*.xml
-- name: Deploy frontend
-  inputs:
-  - type: job
-    stage: Build frontend
+    stage: Build ICONR2 UI
     job: Build
     dir_name: null
   properties:
