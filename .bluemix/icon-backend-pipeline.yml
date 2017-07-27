@@ -4,7 +4,7 @@ stages:
   inputs:
   - service: ${SAMPLE_REPO}
     type: git
-    branch: master
+    branch: load_testing
     dir_name: null
   triggers:
   - type: stage
