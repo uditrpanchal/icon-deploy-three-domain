@@ -27,7 +27,7 @@
             "type": "string"
         },
         "icon-domain": {
-            "description": "Domain to use for deployed apps",
+            "description": "Domain to use for ICONR2 backend apps",
             "type": "string"
         },
         "frontend-nginx-app-name": {
@@ -109,7 +109,7 @@
             "type": "string"
         },
         "front_end_hostnames":{
-            "description": "a list of hostnames seperated by commas, which will be assigned to icon front end at deployment",
+            "description": "a list of PHU acronym seperated by commas, which will be assigned to icon UI at deployment",
             "type":"string"
         },
         "front_end_domain":{
