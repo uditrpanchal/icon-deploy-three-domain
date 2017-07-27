@@ -33,7 +33,6 @@ services:
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
           ICON_DOMAIN: '{{form.pipeline.parameters.icon-domain}}'
-          DEPLOY_SCRIPT: '{{form.pipeline.scripts.blue-green}}'
       execute: false
   icon-r2-frontend-nginx-repo:
     service_id: githubpublic
@@ -59,7 +58,6 @@ services:
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
           ICON_DOMAIN: '{{form.pipeline.parameters.icon-domain}}'
-          DEPLOY_SCRIPT: '{{form.pipeline.scripts.blue-green}}'
           ICON_SERVER_NAME: '{{form.pipeline.parameters.server-app-name}}'
           HOSTNAMES: '{{form.pipeline.parameters.front_end_hostnames}}'
           FRONT_END_DOMAIN: '{{form.pipeline.parameters.front_end_domain}} '
@@ -87,7 +85,6 @@ services:
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
-          DEPLOY_SCRIPT: '{{form.pipeline.scripts.blue-green}}'
           ICON_DOMAIN: '{{form.pipeline.parameters.icon-domain}}'
       execute: false
   icon-r2-kibana-repo:
@@ -113,7 +110,6 @@ services:
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
-          DEPLOY_SCRIPT: '{{form.pipeline.scripts.blue-green}}'
           ICON_DOMAIN: '{{form.pipeline.parameters.icon-domain}}'
       execute: false
   icon-r2-server-repo:
@@ -141,7 +137,6 @@ services:
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
           ICON_DOMAIN: '{{form.pipeline.parameters.icon-domain}}'
-          DEPLOY_SCRIPT: '{{form.pipeline.scripts.blue-green}}'
           CLAMAV_NAME: '{{form.pipeline.parameters.clamav-app-name}}'
           DHIR_NAME: '{{form.pipeline.parameters.dhir-nginx-app-name}}'
           CRYPTO_PASSWORD: '{{form.pipeline.parameters.crypto-password}}'
