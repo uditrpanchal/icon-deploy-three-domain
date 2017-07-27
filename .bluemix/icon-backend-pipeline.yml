@@ -37,9 +37,9 @@ stages:
     script: |-
       #!/bin/bash
       # getting credential of elasticsearch
-      echo "$GET_CERT" > get_cert.sh
-      source get_cert.sh
-      get_cert
+      echo "$GET_CERT" > getcert.sh
+      source getcert.sh
+      getcert
       cf push ${CF_APP} -d ${ICON_DOMAIN} -n ${CF_APP} -f bluemix/base-main-manifest.yml --no-start
   - name: Deploy worker
     type: deployer
@@ -51,9 +51,9 @@ stages:
     script: |-
       #!/bin/bash
       # getting credential of elasticsearch
-      echo "$GET_CERT" > get_cert.sh
-      source get_cert.sh
-      get_cert
+      echo "$GET_CERT" > getcert.sh
+      source getcert.sh
+      getcert
       cf push ${CF_APP} -f bluemix/base-worker-manifest.yml  --no-start
 - name: Configure server
   inputs:
