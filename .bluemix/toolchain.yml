@@ -111,6 +111,7 @@ services:
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
           ICON_DOMAIN: '{{form.pipeline.parameters.icon-domain}}'
+          GET_CERT: '{{form.pipeline.scripts.get-cert}}'
       execute: false
   icon-r2-server-repo:
     service_id: githubpublic
@@ -150,10 +151,18 @@ services:
           PHIX_ENDPOINT_PIN_ADMIN_TOKEN: '{{form.pipeline.parameters.endpoint_pin_admin_token}}'
           POSTGRES_READONLY_ROLE: '{{form.pipeline.parameters.postgres_readonly_role}}'
           TZ: '{{form.pipeline.parameters.tz}}'
+          GET_CERT: '{{form.pipeline.scripts.get-cert}}'
     execute: false
 form:
   pipeline:
     scripts:
+      get-cert: |-
+        #!/bin/bash
+        getcert(){
+          set +e
+          cf service-key icon-elasticsearch Credential1 | grep ca_certificate_base64 | cut -d ':' -f 2 | tr -d "\\", \\n"  | base64 --decode > cert.pem
+          set -e 
+        }
       blue-green: |-
         #!/bin/bash
         echo "Getting options"

@@ -27,6 +27,9 @@ stages:
   - name: ICON_DOMAIN
     type: text
     value: ${ICON_DOMAIN}
+  - name: GET_CERT
+    type: text_area
+    value: ${GET_CERT}
   jobs:
   - name: Deploy
     type: deployer
@@ -38,7 +41,9 @@ stages:
     script: |-
       #!/bin/bash
       # get certificate
-      cf service-key icon-elasticsearch Credential1 | grep ca_certificate_base64 | cut -d ':' -f 2 | tr -d "\", \n"  | base64 --decode > cert.pem
+      echo "$GET_CERT" > get_cert.sh
+      source get_cert.sh
+      get_cert
       cf push ${CF_APP} -f bluemix/base-manifest.yml -n ${CF_APP} -d ${ICON_DOMAIN} --no-start
       # set certificate
       cf set-env ${CF_APP} NODE_EXTRA_CA_CERTS cert.pem
