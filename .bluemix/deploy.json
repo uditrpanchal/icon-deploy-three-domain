@@ -136,17 +136,20 @@
              "title": "Source repository URL",
         "description": "Type the URL of the repository that you are forking or cloning.",
         "type": "string",
-        "value":"gbhu"
+        "value":"gbhu",
+        "enum":["gbhu"]
         },"second":{
              "title": "Source repository URL",
         "description": "Type the URL of the repository that you are forking or cloning.",
         "type": "string",
-        "value":"peel"
+        "value":"peel",
+        "enum": ["peel"]
         },"full":{
              "title": "Source repository URL",
         "description": "Type the URL of the repository that you are forking or cloning.",
         "type": "string",
-        "value":"rowphu"
+        "value":"rowphu",
+        "enum":["rowphu"]
         }
 
 
