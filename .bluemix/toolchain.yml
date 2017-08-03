@@ -216,5 +216,6 @@ form:
       front_end_domain: ''
       tz: 'America/Toronto'
       PHUs: ''
+      customPHUs: ''
     schema:
       $ref: deploy.json

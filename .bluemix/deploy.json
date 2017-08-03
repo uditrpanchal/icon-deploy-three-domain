@@ -108,10 +108,6 @@
             "description": "Timezone",
             "type": "string"
         },
-        "front_end_hostnames":{
-            "description": "a list of PHU acronym seperated by commas, which will be assigned to icon UI at deployment",
-            "type":"string"
-        },
         "front_end_domain":{
             "description": "ICONR2 front facing domain",
             "type":"string"
@@ -125,26 +121,22 @@
             "type":"string"
         },
         "PHUs":{
-            "title":"All phus names",
+            "title":"PHU acronyms",
             "name":"PHU",
+                "description": "a list of PHU acronym seperated by commas, which will be assigned to icon UI at deployment",
             "type":"string",
             "enum": [
-                "gbhu,nwhu","gbhu,nwhu,peel","gbhu,nwhu,peel,rowph"
+                "Aug,1st",
+                "Aug,11st",
+                "Sept,1st",
+                "Null"
             ],
-            "value":"gbhu,nwhu"
-        },"first":{
-             "title": "qwe qweqwe qweqwioeuqwoieu oqiweuoqiw euqwoieu qowieuqwoeuqwoie uqwoieu qwoieu qwoieu qwoeu qowue qwie oqwiue oqwue oiqwu eoiqwue oqwiue oiqwue oqiw 11"
-        },"second":{
-             "title": "qwe qweqwe qweqwioeuqwoieu oqiweuoqiw euqwoieu qowieuqwoeuqwoie uqwoieu qwoieu qwoieu qwoeu qowue qwie oqwiue oqwue oiqwu eoiqwue oqwiue oiqwue oqiw 1"
-     
-     
-        },"full":{
-             "title": "qwe qweqwe qweqwioeuqwoieu oqiweuoqiw euqwoieu qowieuqwoeuqwoie uqwoieu qwoieu qwoieu qwoeu qowue qwie oqwiue oqwue oiqwu eoiqwue oqwiue oiqwue oqiw 2"
-
-      
+            "value":"Aug,1st"
+        },
+        "customPHUs":{
+            "description": "admin endpoint",
+            "type":"string"
         }
-
-
     },
     "required": [
         "prod-region",
@@ -166,7 +158,6 @@
         "endpoint_dictionary",
         "jwt-secret",
         "crypto-password",
-        "front_end_hostnames",
         "endpoint_pin_admin",
         "endpoint_pin_admin_token",
         "front_end_domain"
@@ -175,57 +166,6 @@
         {
             "type": "validator",
             "url": "/devops/setup/bm-helper/helper.html"
-        },
-        {
-            "type": "selectfieldset",
-            "key":"PHUs",
-            "titleMap": {
-              "gbhu,nwhu":"Aug,1st",
-            "gbhu,nwhu,peel":"Aug,11st",
-              "gbhu,nwhu,peel,rowph":"Sept,1st"
-            },
-            "items":[
-                {
-                        "type": "section",
-                        "description": "Aug 1st statring with waterloo(rowph)",
-                        "items":[
-                            
-                            {
-                                "key":"first",
-                                "type":"label"
-                             
-                        }
-                           
-                        ]
-                },
-                    {
-                        "type": "section",
-                        "description": "Aug 11st statring with waterloo(rowph,2)",
-                        "items":[
-                            
-                            {
-                                "key":"second",
-                                "type":"label"
-                                
-                        }
-                           
-                        ]
-                }
-                    ,{
-                        "type": "section",
-                        "description": "Sept 1st statring with waterloo(rowph,3)",
-                        "items":[
-                            
-    
-                            {
-                                "key":"full",
-                                "type":"label"
-                            
-                        }
-                           
-                        ]
-                }
-            ]
         },
         {
             "type": "text",
@@ -309,12 +249,42 @@
             "key": "tz"
         },
         {
-            "type":"text",
-            "readonly":false,
-            "title":{
-                "$ref":"#/messages/deploy.front_end_hostnames"
+            "type": "selectfieldset",
+            "key":"PHUs",
+            "titleMap": {
+               "Aug,1st":"first wave PHUs",
+                "Aug,11st":"second wave PHUs",
+                "Sept,1st":"all phus",
+                "Null":"Customized phus"
             },
-            "key":"front_end_hostnames"
+            "items":[
+                {
+                        "type": "section",
+                        "description": "Aug 1st statring with waterloo(rowph)"
+                },
+                    {
+                        "type": "section",
+                        "description": "Second wave of "
+                }
+                    ,{
+                        "type": "section",
+                        "description": "Sept 1st"
+                           
+                },
+                {
+                        "type": "section",
+                        "description": "Customize PHU acronyms",
+                        "items":[
+                            {
+                                "type":"text",
+                                "key":"customPHUs",
+                                "title":{
+                                    "$ref":"#/messages/deploy.front_end_hostnames"
+                                }
+                            }
+                        ]
+                }
+            ]
         },
         {
             "type":"text",
