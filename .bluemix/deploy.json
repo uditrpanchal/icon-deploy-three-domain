@@ -121,7 +121,7 @@
             "type":"string"
         },
         "PHUs":{
-            "title":"PHU acronyms",
+            "title":"PHU Selection",
             "name":"PHU",
             "description": "Select PHUs to be made availiable",
             "type":"string",

@@ -68,9 +68,7 @@ stages:
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash    
-      
-      cf set-env ${CF_APP} ICON_SERVER https://${ICON_SERVER_NAME}.${ICON_DOMAIN}
-
+     
       PHUs=
       if [ -z ${PHU_SELECT} ]
       then
@@ -91,11 +89,14 @@ stages:
       fi
       
       echo ${PHUs}
-      #for i in $(echo $PHUs | tr ',' ' ')
-      #do
-      #  cf map-route ${CF_APP} ${FRONT_END_DOMAIN} --hostname $i
-      #done
-      #cf start ${CF_APP}
+      for i in $(echo $PHUs | tr ',' ' ')
+      do
+        cf map-route ${CF_APP} ${FRONT_END_DOMAIN} --hostname $i
+      done
+      
+      cf set-env ${CF_APP} ICON_SERVER https://${ICON_SERVER_NAME}.${ICON_DOMAIN}
+
+      cf start ${CF_APP}
 hooks:
 - enabled: true
   label: null
