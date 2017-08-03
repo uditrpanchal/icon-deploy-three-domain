@@ -95,7 +95,7 @@ stages:
       done
       
       cf set-env ${CF_APP} ICON_SERVER https://${ICON_SERVER_NAME}.${ICON_DOMAIN}
-
+      
       cf start ${CF_APP}
 hooks:
 - enabled: true

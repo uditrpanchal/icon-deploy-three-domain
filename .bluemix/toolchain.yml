@@ -33,6 +33,8 @@ services:
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
           ICON_DOMAIN: '{{form.pipeline.parameters.icon-domain}}'
+          CLAMAV_MEM: '{{form.pipeline.parameters.icon_clamav_mem}}'
+          CLAMAV_COUNT: '{{form.pipeline.parameters.icon_clamav_count}}'
       execute: false
   icon-r2-frontend-nginx-repo:
     service_id: githubpublic

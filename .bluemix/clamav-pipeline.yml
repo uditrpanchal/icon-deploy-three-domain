@@ -35,7 +35,33 @@ stages:
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
-      cf push ${CF_APP} -n ${CF_APP} -d ${ICON_DOMAIN} -f bluemix/base-manifest.yml
+      cf push ${CF_APP} -n ${CF_APP} -d ${ICON_DOMAIN} -f bluemix/base-manifest.yml --no-start
+- name: Configure CLAMAV
+  inputs:
+  - type: job
+    stage: Build CLAMAV
+    job: Build
+    dir_name: null
+  properties:
+  - name: CLAMAV_MEM
+    type: text
+    value: ${CLAMAV_MEM}
+  - name: CLAMAV_COUNT
+    type: text
+    value: ${CLAMAV_COUNT}
+  triggers:
+  - type: stage
+  jobs:
+  - name: Deploy
+    type: deployer
+    target:
+      region_id: ${PROD_REGION_ID}
+      organization: ${PROD_ORG_NAME}
+      space: ${PROD_SPACE_NAME}
+      application: ${CF_APP_NAME}
+    script: |-
+      #!/bin/bash
+      cf scale -f -i ${CLAMAV_COUNT} -m ${CLAMAV_MEM} ${CF_APP} 
 hooks:
 - enabled: true
   label: null
