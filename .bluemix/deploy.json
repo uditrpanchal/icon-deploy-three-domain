@@ -140,11 +140,11 @@
         "frontend_mem": {
             "type": "string",
             "enum": [
-                "256",
-                "512",
-                "1024"
+                "256MB",
+                "512MB",
+                "1024MB"
             ],
-            "value": "256"
+            "value": "256MB"
         },
         "frontend_count": {
             "type": "string",
@@ -165,10 +165,10 @@
         "backend_mem": {
             "type": "string",
             "enum": [
-                "1024",
-                "2048"
+                "1024MB",
+                "2048MB"
             ],
-            "value": "1024"
+            "value": "1024MB"
         },
         "backend_count": {
             "type": "string",
@@ -189,10 +189,10 @@
         "backend_worker_mem": {
             "type": "string",
             "enum": [
-                "1024",
-                "2048"
+                "1024MB",
+                "2048MB"
             ],
-            "value": "1024"
+            "value": "1024MB"
         },
         "backend_worker_count": {
             "type": "string",
@@ -213,10 +213,10 @@
         "icon_clamav_mem": {
             "type": "string",
             "enum": [
-                "1024",
-                "2048"
+                "1024MB",
+                "2048MB"
             ],
-            "value": "1024"
+            "value": "1024MB"
         },
         "icon_clamav_count": {
             "type": "string",
@@ -237,11 +237,11 @@
         "dhir_nginx_mem": {
             "type": "string",
             "enum": [
-                "256",
-                "512",
-                "1024"
+                "256MB",
+                "512MB",
+                "1024MB"
             ],
-            "value": "256"
+            "value": "256MB"
         },
         "dhir_nginx_count": {
             "type": "string",
@@ -262,10 +262,10 @@
         "icon_kibana_mem": {
             "type": "string",
             "enum": [
-                "1024",
-                "2048"
+                "1024MB",
+                "2048MB"
             ],
-            "value": "1024"
+            "value": "1024MB"
         },
         "icon_kibana_count": {
             "type": "string",
@@ -465,9 +465,9 @@
             "type": "table",
             "columnCount": 3,
             "widths": [
-                "80%",
-                "10%",
-                "10%"
+                "55%",
+                "30%",
+                "15%"
             ],
             "items": [
                 {
