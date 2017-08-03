@@ -308,7 +308,7 @@
                     "key": "kibana-app-name"
                 },
                 {
-                    "type":"checkbox",
+                    "type":"enum",
                     "key":"depends"
                 }
                 ,
