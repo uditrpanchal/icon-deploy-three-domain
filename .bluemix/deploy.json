@@ -186,7 +186,7 @@
             ],
             "value": "1"
         },
-        "backendend_worker_mem": {
+        "backend_worker_mem": {
             "type": "string",
             "enum": [
                 "1024",
@@ -409,6 +409,22 @@
             "key": "tz"
         },
         {
+            "type": "text",
+            "readonly": false,
+            "title": {
+                "$ref": "#/messages/icon-domain"
+            },
+            "key": "icon-domain"
+        },
+        {
+            "type": "text",
+            "readonly": false,
+            "title": {
+                "$ref": "#/messages/deploy.front_end_domain"
+            },
+            "key": "front_end_domain"
+        },
+        {
             "type": "selectfieldset",
             "key": "PHUs",
             "titleMap": {
@@ -446,22 +462,6 @@
             ]
         },
         {
-            "type": "text",
-            "readonly": false,
-            "title": {
-                "$ref": "#/messages/deploy.front_end_domain"
-            },
-            "key": "front_end_domain"
-        },
-        {
-            "type": "text",
-            "readonly": false,
-            "title": {
-                "$ref": "#/messages/icon-domain"
-            },
-            "key": "icon-domain"
-        },
-        {
             "type": "table",
             "columnCount": 3,
             "widths": [
@@ -472,16 +472,17 @@
             "items": [
                 {
                     "type": "label",
-                    "title": "Application name"
-                },
-                {
-                    "type": "label",
-                    "title": "Instance Count"
+                    "title": ""
                 },
                 {
                     "type": "label",
                     "title": "Memory"
                 },
+                {
+                    "type": "label",
+                    "title": "Instance"
+                },
+                
                 {
                     "type": "label",
                     "title": {
@@ -585,7 +586,7 @@
                 },
                 {
                     "type": "select",
-                    "key": "bakcend_count"
+                    "key": "backend_count"
                 },
                 {
                     "type": "label",
