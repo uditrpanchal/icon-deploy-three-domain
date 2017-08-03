@@ -123,7 +123,7 @@
         "PHUs":{
             "title":"PHU acronyms",
             "name":"PHU",
-                "description": "a list of PHU acronym seperated by commas, which will be assigned to icon UI at deployment",
+            "description": "Select PHUs to be made availiable",
             "type":"string",
             "enum": [
                 "Aug,1st",
@@ -134,7 +134,7 @@
             "value":"Aug,1st"
         },
         "customPHUs":{
-            "description": "admin endpoint",
+            "description": "a list of PHU acronym seperated by commas, which will be assigned to icon UI at deployment",
             "type":"string"
         }
     },
@@ -254,7 +254,7 @@
             "titleMap": {
                "Aug,1st":"first wave PHUs",
                 "Aug,11st":"second wave PHUs",
-                "Sept,1st":"all phus",
+                "Sept,1st":"all PHUs",
                 "Null":"Customized phus"
             },
             "items":[
@@ -279,7 +279,7 @@
                                 "type":"text",
                                 "key":"customPHUs",
                                 "title":{
-                                    "$ref":"#/messages/deploy.front_end_hostnames"
+                                    "$ref":"#/messages/deploy.customPHUs"
                                 }
                             }
                         ]

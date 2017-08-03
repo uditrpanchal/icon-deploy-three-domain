@@ -19,22 +19,6 @@ stages:
     stage: Build ICONR2 UI
     job: Build
     dir_name: null
-  properties:
-  - name: ICON_DOMAIN
-    type: text
-    value: ${ICON_DOMAIN}
-  - name: ICON_SERVER_NAME
-    type: text
-    value: ${ICON_SERVER_NAME}
-  - name: HOSTNAMES
-    type: text
-    value: ${HOSTNAMES}
-  - name: FRONT_END_DOMAIN
-    type: text
-    value: ${FRONT_END_DOMAIN}
-  - name: PUHs
-    type: text
-    value: ${PHUs}
   triggers:
   - type: stage
   jobs:
@@ -49,14 +33,69 @@ stages:
     script: |-
       #!/bin/bash    
       cf push ${CF_APP}  -f bluemix/base-manifest.yml --no-start --no-route
-
-      for i in $(echo $HOSTNAMES | tr ',' ' ')
-      do
-        cf map-route ${CF_APP} ${FRONT_END_DOMAIN} --hostname $i
-      done
-
+- name: Configure ICONR2 UI
+  inputs:
+  - type: job
+    stage: Build ICONR2 UI
+    job: Build
+    dir_name: null
+  properties:
+  - name: ICON_DOMAIN
+    type: text
+    value: ${ICON_DOMAIN}
+  - name: ICON_SERVER_NAME
+    type: text
+    value: ${ICON_SERVER_NAME}
+  - name: PHU_SELECT
+    type: text
+    value: ${PHU_SELECT}
+  - name: FRONT_END_DOMAIN
+    type: text
+    value: ${FRONT_END_DOMAIN}
+  - name: CUSTOM_PHU
+    type: text
+    value: ${CUSTOM_PHU}
+  triggers:
+  - type: stage
+  jobs:
+  - name: Deploy
+    type: deployer
+    target:
+    target:
+      region_id: ${PROD_REGION_ID}
+      organization: ${PROD_ORG_NAME}
+      space: ${PROD_SPACE_NAME}
+      application: ${CF_APP_NAME}
+    script: |-
+      #!/bin/bash    
+      
       cf set-env ${CF_APP} ICON_SERVER https://${ICON_SERVER_NAME}.${ICON_DOMAIN}
-      cf start ${CF_APP}
+
+      PHUs=
+      if [ -z ${PHU_SELECT} ]
+      then
+        PHUs=${CUSTOM_PHU}
+      else
+        if [ ${PHU_SELECT} = "Aug,1st" ]
+        then
+          PHUs='rowph,xxsupportphu1' 
+        elif [ ${PHU_SELECT} = "Aug,11st" ]
+        then
+          PHUs='rowph,xxsupportphu1' 
+        elif [ ${PHU_SELECT} = "Sept,1st" ]
+        then
+          PHUs='3' 
+        else
+          PHUs=${CUSTOM_PHU}
+        fi
+      fi
+      
+      echo ${PHUs}
+      #for i in $(echo $PHUs | tr ',' ' ')
+      #do
+      #  cf map-route ${CF_APP} ${FRONT_END_DOMAIN} --hostname $i
+      #done
+      #cf start ${CF_APP}
 hooks:
 - enabled: true
   label: null

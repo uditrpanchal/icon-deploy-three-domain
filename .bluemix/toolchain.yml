@@ -59,7 +59,8 @@ services:
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
           ICON_DOMAIN: '{{form.pipeline.parameters.icon-domain}}'
           ICON_SERVER_NAME: '{{form.pipeline.parameters.server-app-name}}'
-          HOSTNAMES: '{{form.pipeline.parameters.front_end_hostnames}}'
+          PHU_SELECT: '{{form.pipeline.parameters.PHUs}}'
+          CUSTOM_PHU: '{{form.pipeline.parameters.customPHUs}}'
           FRONT_END_DOMAIN: '{{form.pipeline.parameters.front_end_domain}} '
           PHUs: '{{form.pipeline.parameters.PHUs}} '
       execute: false
@@ -212,7 +213,6 @@ form:
       endpoint_pin_admin: '/API/FHIR/Immunizations/v2/Admin/'
       endpoint_pin_admin_token: '<pin admin token>'
       postgres_readonly_role: 'readonly:WERJFIRWJWNEDJASDF'
-      front_end_hostnames: ''
       front_end_domain: ''
       tz: 'America/Toronto'
       PHUs: ''
