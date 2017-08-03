@@ -1,0 +1,218 @@
+"form": [
+        {
+            "type": "validator",
+            "url": "/devops/setup/bm-helper/github_helper.html?consolidated=true"
+        },
+        {
+            "type": "selectfieldset",
+            "key": "git_id",
+            "titleMap": {
+                "github": "GitHub (https://github.com)",
+                "githubcustom": "Add custom server..."
+            },
+            "items": [
+                {
+                    "type": "section",
+                    "items": [
+                        {
+                            "type": "selectfieldset",
+                            "key": "type",
+                            "titleMap": {
+                                "new": "New",
+                                "fork": "Fork",
+                                "link": "Existing",
+                                "clone": "Clone"
+                            },
+                            "items": [
+                                {
+                                    "type": "section",
+                                    "description": "Create an empty repository.",
+                                    "items": [
+                                        {
+                                            "key": "namespace_table",
+                                            "columnCount": 3,
+                                            "widths": [
+                                                "38%",
+                                                "2%",
+                                                "60%"
+                                            ],
+                                            "items": [
+                                                {
+                                                    "type": "label",
+                                                    "title": "Owner"
+                                                },
+                                                {
+                                                    "type": "label",
+                                                    "title": ""
+                                                },
+                                                {
+                                                    "type": "label",
+                                                    "title": "Repository Name"
+                                                },
+                                                {
+                                                    "key": "owner_id",
+                                                    "enum": [
+                                                        "Shifeng-ON",
+                                                        "MOHLTC11"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "icon",
+                                                    "title": ""
+                                                },
+                                                {
+                                                    "key": "repo_name"
+                                                }
+                                            ]
+                                        },
+                                        "has_issues",
+                                        "enable_traceability"
+                                    ]
+                                },
+                                {
+                                    "type": "section",
+                                    "description": "Fork the repository that is specified in the Source repository URL field.",
+                                    "items": [
+                                        {
+                                            "type": "select",
+                                            "key": "source_repo_url",
+                                            "readonly": false
+                                        },
+                                        {
+                                            "key": "namespace_table",
+                                            "columnCount": 3,
+                                            "widths": [
+                                                "38%",
+                                                "2%",
+                                                "60%"
+                                            ],
+                                            "items": [
+                                                {
+                                                    "type": "label",
+                                                    "title": "Owner"
+                                                },
+                                                {
+                                                    "type": "label",
+                                                    "title": ""
+                                                },
+                                                {
+                                                    "type": "label",
+                                                    "title": "Repository Name"
+                                                },
+                                                {
+                                                    "key": "owner_id",
+                                                    "enum": [
+                                                        "Shifeng-ON",
+                                                        "MOHLTC11"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "icon",
+                                                    "title": ""
+                                                },
+                                                {
+                                                    "key": "repo_name",
+                                                    "readonly": true
+                                                }
+                                            ]
+                                        },
+                                        "has_issues",
+                                        "enable_traceability"
+                                    ]
+                                },
+                                {
+                                    "type": "section",
+                                    "description": "Clone the repository that is specified in the Source repository URL field.",
+                                    "items": [
+                                        {
+                                            "type": "select",
+                                            "key": "source_repo_url",
+                                            "readonly": false
+                                        },
+                                        {
+                                            "key": "namespace_table",
+                                            "columnCount": 3,
+                                            "widths": [
+                                                "38%",
+                                                "2%",
+                                                "60%"
+                                            ],
+                                            "items": [
+                                                {
+                                                    "type": "label",
+                                                    "title": "Owner"
+                                                },
+                                                {
+                                                    "type": "label",
+                                                    "title": ""
+                                                },
+                                                {
+                                                    "type": "label",
+                                                    "title": "Repository Name"
+                                                },
+                                                {
+                                                    "key": "owner_id",
+                                                    "enum": [
+                                                        "Shifeng-ON",
+                                                        "MOHLTC11"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "icon",
+                                                    "title": ""
+                                                },
+                                                {
+                                                    "key": "repo_name"
+                                                }
+                                            ]
+                                        },
+                                        "has_issues",
+                                        "enable_traceability"
+                                    ]
+                                },
+                                {
+                                    "type": "section",
+                                    "description": "Link to the repository that is specified in the Repository URL field.",
+                                    "items": [
+                                        {
+                                            "type": "select",
+                                            "key": "repo_url",
+                                            "readonly": false
+                                        },
+                                        "has_issues",
+                                        "enable_traceability"
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "description": "Authorized as Shifeng-ON with access granted to MOHLTC11 GitHub organization(s)"
+                },
+                {
+                    "type": "section",
+                    "overrideValidity": true,
+                    "items": [
+                        {
+                            "type": "subform",
+                            "key": "custom_host",
+                            "items": [
+                                {
+                                    "key": "title",
+                                    "value": ""
+                                },
+                                {
+                                    "key": "root_url",
+                                    "value": ""
+                                },
+                                {
+                                    "key": "access_token",
+                                    "value": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "description": "Add a custom GitHub server by providing a title, root url, and personal access token."
+                }
+            ]
+        }
+    ]

@@ -124,21 +124,14 @@
               "description": "admin endpoint",
             "type":"string"
         },
-        "depends":{
-            "description":" test",
+        "PHUs":{
+            "title":"All phus names",
+            "name":"PHU",
             "type":"string",
-    
             "enum": [
-                1,2,3
-            ]
-        },
-          "depends1":{
-            "description":" test",
-            "type":"string",
-     
-            "enum": [
-                1,2,3,4
-            ]
+                "gbhu,nwhu","gbhu,nwhu,peel","gbhu,nwhu,peel,rowph"
+            ],
+            "value":"gbhu,nwhu"
         }
 
 
@@ -172,6 +165,53 @@
         {
             "type": "validator",
             "url": "/devops/setup/bm-helper/helper.html"
+        },
+        {
+            "type": "selectfieldset",
+            "key":"PHUs",
+            "titleMap": {
+              "gbhu,nwhu":"Aug,1st",
+            "gbhu,nwhu,peel":"Aug,11st",
+              "gbhu,nwhu,peel,rowph":"Sept,1st"
+            },
+            "items":[
+                {
+                        "type": "section",
+                        "description": "Aug 1st statring with waterloo(rowph)",
+                        "items":[
+                            
+                            {
+                                "value":"gbhu,nwhu",
+                                "type":"string"
+                        }
+                           
+                        ]
+                },
+                    {
+                        "type": "section",
+                        "description": "Aug 1st statring with waterloo(rowph)",
+                        "items":[
+                            
+                            {
+                                "value":"gbhu,nwhu,peel",
+                                "type":"string"
+                        }
+                           
+                        ]
+                }
+                    ,{
+                        "type": "section",
+                        "description": "Aug 1st statring with waterloo(rowph)",
+                        "items":[
+                            
+                            {
+                                "value":"gbhu,nwhu,peel,rowph",
+                                "type":"string"
+                        }
+                           
+                        ]
+                }
+            ]
         },
         {
             "type": "text",
@@ -292,15 +332,7 @@
                     "title": {
                         "$ref": "#/messages/deploy.appName.frontend-nginx"
                     }
-                }
-                ,{
-                    "type":"select",
-                    "key":"depends"
-                },{
-                    "type":"select",
-                    "key":"depends1"
-                }
-                ,
+                },
                 {
                     "type": "label",
                     "title": {
