@@ -123,6 +123,14 @@
         "endpoint_pin_admin":{
               "description": "admin endpoint",
             "type":"string"
+        },
+        "depends":{
+            "description":" test",
+            "type":"string",
+            "value": 1,
+            "enum": [
+                1,2,3
+            ]
         }
 
 
@@ -308,7 +316,7 @@
                     "key": "kibana-app-name"
                 },
                 {
-                    "type":"enum",
+                    "type":"select",
                     "key":"depends"
                 }
                 ,
