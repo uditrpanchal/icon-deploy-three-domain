@@ -131,6 +131,14 @@
             "enum": [
                 1,2,3
             ]
+        },
+          "depends1":{
+            "description":" test",
+            "type":"string",
+            "value": 1,
+            "enum": [
+                1,2,3,4
+            ]
         }
 
 
@@ -284,7 +292,15 @@
                     "title": {
                         "$ref": "#/messages/deploy.appName.frontend-nginx"
                     }
-                },
+                }
+                ,{
+                    "type":"select",
+                    "key":"depends"
+                },{
+                    "type":"select",
+                    "key":"depends1"
+                }
+                ,
                 {
                     "type": "label",
                     "title": {
@@ -315,11 +331,7 @@
                     "type": "text",
                     "key": "kibana-app-name"
                 },
-                {
-                    "type":"select",
-                    "key":"depends"
-                }
-                ,
+                
                 {
                     "type": "text",
                     "readonly": false,
