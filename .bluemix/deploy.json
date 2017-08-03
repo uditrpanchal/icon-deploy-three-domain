@@ -127,7 +127,7 @@
         "depends":{
             "description":" test",
             "type":"string",
-            "value": 1,
+    
             "enum": [
                 1,2,3
             ]
@@ -135,7 +135,7 @@
           "depends1":{
             "description":" test",
             "type":"string",
-            "value": 1,
+     
             "enum": [
                 1,2,3,4
             ]

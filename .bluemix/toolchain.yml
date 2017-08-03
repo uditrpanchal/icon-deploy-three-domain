@@ -214,7 +214,7 @@ form:
       front_end_hostnames: ''
       front_end_domain: ''
       tz: 'America/Toronto'
-      depends: ''
-      depends1: ''
+      depends: 2
+      depends1: 1
     schema:
       $ref: deploy.json
