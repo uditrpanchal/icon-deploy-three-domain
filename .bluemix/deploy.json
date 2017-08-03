@@ -308,6 +308,11 @@
                     "key": "kibana-app-name"
                 },
                 {
+                    "type":"checkbox",
+                    "key":"depends"
+                }
+                ,
+                {
                     "type": "text",
                     "readonly": false,
                     "key": "server-app-name"
