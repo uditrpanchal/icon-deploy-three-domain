@@ -132,6 +132,21 @@
                 "gbhu,nwhu","gbhu,nwhu,peel","gbhu,nwhu,peel,rowph"
             ],
             "value":"gbhu,nwhu"
+        },"first":{
+             "title": "Source repository URL",
+        "description": "Type the URL of the repository that you are forking or cloning.",
+        "type": "string",
+        "value":"gbhu"
+        },"second":{
+             "title": "Source repository URL",
+        "description": "Type the URL of the repository that you are forking or cloning.",
+        "type": "string",
+        "value":"peel"
+        },"full":{
+             "title": "Source repository URL",
+        "description": "Type the URL of the repository that you are forking or cloning.",
+        "type": "string",
+        "value":"rowphu"
         }
 
 
@@ -181,32 +196,36 @@
                         "items":[
                             
                             {
-                                "value":"gbhu,nwhu",
-                                "type":"string"
+                                "key":"first",
+                                "type":"text",
+                                "readonly":true
                         }
                            
                         ]
                 },
                     {
                         "type": "section",
-                        "description": "Aug 1st statring with waterloo(rowph)",
+                        "description": "Aug 11st statring with waterloo(rowph,2)",
                         "items":[
                             
                             {
-                                "value":"gbhu,nwhu,peel",
-                                "type":"string"
+                                "key":"second",
+                                "type":"text",
+                                "readonly":true
                         }
                            
                         ]
                 }
                     ,{
                         "type": "section",
-                        "description": "Aug 1st statring with waterloo(rowph)",
+                        "description": "Sept 1st statring with waterloo(rowph,3)",
                         "items":[
                             
+    
                             {
-                                "value":"gbhu,nwhu,peel,rowph",
-                                "type":"string"
+                                "key":"full",
+                                "type":"text",
+                                "readonly":true
                         }
                            
                         ]
