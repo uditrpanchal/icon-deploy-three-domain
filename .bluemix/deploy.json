@@ -108,34 +108,180 @@
             "description": "Timezone",
             "type": "string"
         },
-        "front_end_domain":{
+        "front_end_domain": {
             "description": "ICONR2 front facing domain",
-            "type":"string"
+            "type": "string"
         },
-        "endpoint_pin_admin_token":{
-              "description": "admin endpoint token",
-            "type":"string"
+        "endpoint_pin_admin_token": {
+            "description": "admin endpoint token",
+            "type": "string"
         },
-        "endpoint_pin_admin":{
-              "description": "admin endpoint",
-            "type":"string"
+        "endpoint_pin_admin": {
+            "description": "admin endpoint",
+            "type": "string"
         },
-        "PHUs":{
-            "title":"PHU Selection",
-            "name":"PHU",
+        "PHUs": {
+            "title": "PHU Selection",
+            "name": "PHU",
             "description": "Select PHUs to be made availiable",
-            "type":"string",
+            "type": "string",
             "enum": [
                 "Aug,1st",
                 "Aug,11st",
                 "Sept,1st",
                 "Null"
             ],
-            "value":"Aug,1st"
+            "value": "Aug,1st"
         },
-        "customPHUs":{
+        "customPHUs": {
             "description": "a list of PHU acronym seperated by commas, which will be assigned to icon UI at deployment",
-            "type":"string"
+            "type": "string"
+        },
+        "frontend_mem": {
+            "type": "string",
+            "enum": [
+                "256",
+                "512",
+                "1024"
+            ],
+            "value": "256"
+        },
+        "frontend_count": {
+            "type": "string",
+            "enum": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10"
+            ],
+            "value": "1"
+        },
+        "backend_mem": {
+            "type": "string",
+            "enum": [
+                "1024",
+                "2048"
+            ],
+            "value": "1024"
+        },
+        "backend_count": {
+            "type": "string",
+            "enum": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10"
+            ],
+            "value": "1"
+        },
+        "backendend_worker_mem": {
+            "type": "string",
+            "enum": [
+                "1024",
+                "2048"
+            ],
+            "value": "1024"
+        },
+        "backend_worker_count": {
+            "type": "string",
+            "enum": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10"
+            ],
+            "value": "1"
+        },
+        "icon_clamav_mem": {
+            "type": "string",
+            "enum": [
+                "1024",
+                "2048"
+            ],
+            "value": "1024"
+        },
+        "icon_clamav_count": {
+            "type": "string",
+            "enum": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10"
+            ],
+            "value": "1"
+        },
+        "dhir_nginx_mem": {
+            "type": "string",
+            "enum": [
+                "256",
+                "512",
+                "1024"
+            ],
+            "value": "256"
+        },
+        "dhir_nginx_count": {
+            "type": "string",
+            "enum": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10"
+            ],
+            "value": "1"
+        },
+        "icon_kibana_mem": {
+            "type": "string",
+            "enum": [
+                "1024",
+                "2048"
+            ],
+            "value": "1024"
+        },
+        "icon_kibana_count": {
+            "type": "string",
+            "enum": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10"
+            ],
+            "value": "1"
         }
     },
     "required": [
@@ -160,7 +306,21 @@
         "crypto-password",
         "endpoint_pin_admin",
         "endpoint_pin_admin_token",
-        "front_end_domain"
+        "front_end_domain",
+        "customPHUs",
+        "PHUs",
+        "frontend_mem",
+        "frontend_count",
+        "backend_mem",
+        "backend_count",
+        "backendend_worker_mem",
+        "backend_worker_count",
+        "icon_clamav_mem",
+        "icon_clamav_count",
+        "dhir_nginx_mem",
+        "dhir_nginx_count",
+        "icon_kibana_mem",
+        "icon_kibana_count"
     ],
     "form": [
         {
@@ -250,51 +410,49 @@
         },
         {
             "type": "selectfieldset",
-            "key":"PHUs",
+            "key": "PHUs",
             "titleMap": {
-               "Aug,1st":"first wave PHUs",
-                "Aug,11st":"second wave PHUs",
-                "Sept,1st":"all PHUs",
-                "Null":"Customized phus"
+                "Aug,1st": "first wave PHUs",
+                "Aug,11st": "second wave PHUs",
+                "Sept,1st": "all PHUs",
+                "Null": "Customized phus"
             },
-            "items":[
+            "items": [
                 {
-                        "type": "section",
-                        "description": "Aug 1st statring with waterloo(rowph)"
-                },
-                    {
-                        "type": "section",
-                        "description": "Second wave of "
-                }
-                    ,{
-                        "type": "section",
-                        "description": "Sept 1st"
-                           
+                    "type": "section",
+                    "description": "Aug 1st statring with waterloo(rowph)"
                 },
                 {
-                        "type": "section",
-                        "description": "Customize PHU acronyms",
-                        "items":[
-                            {
-                                "type":"text",
-                                "key":"customPHUs",
-                                "title":{
-                                    "$ref":"#/messages/deploy.customPHUs"
-                                }
+                    "type": "section",
+                    "description": "Second wave of "
+                },
+                {
+                    "type": "section",
+                    "description": "Sept 1st"
+                },
+                {
+                    "type": "section",
+                    "description": "Customize PHU acronyms",
+                    "items": [
+                        {
+                            "type": "text",
+                            "key": "customPHUs",
+                            "title": {
+                                "$ref": "#/messages/deploy.customPHUs"
                             }
-                        ]
+                        }
+                    ]
                 }
             ]
         },
         {
-            "type":"text",
-            "readonly":false,
-            "title":{
-                "$ref":"#/messages/deploy.front_end_domain"
+            "type": "text",
+            "readonly": false,
+            "title": {
+                "$ref": "#/messages/deploy.front_end_domain"
             },
-            "key":"front_end_domain"
-        }
-        ,
+            "key": "front_end_domain"
+        },
         {
             "type": "text",
             "readonly": false,
@@ -307,10 +465,23 @@
             "type": "table",
             "columnCount": 2,
             "widths": [
-                "50%",
-                "50%"
+                "80%",
+                "10%",
+                "10%"
             ],
             "items": [
+                {
+                    "type": "label",
+                    "title": "Application name"
+                },
+                {
+                    "type": "label",
+                    "title": "Instance Count"
+                },
+                {
+                    "type": "label",
+                    "title": "Memory"
+                },
                 {
                     "type": "label",
                     "title": {
@@ -319,17 +490,49 @@
                 },
                 {
                     "type": "label",
-                    "title": {
-                        "$ref": "#/messages/deploy.appName.dhir-nginx"
-                    }
+                    "title": ""
+                },
+                {
+                    "type": "label",
+                    "title": ""
                 },
                 {
                     "type": "text",
                     "key": "frontend-nginx-app-name"
                 },
                 {
+                    "type": "select",
+                    "key": "frontend_mem"
+                },
+                {
+                    "type": "select",
+                    "key": "frontend_count"
+                },
+                {
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/deploy.appName.dhir-nginx"
+                    }
+                },
+                {
+                    "type": "label",
+                    "title": ""
+                },
+                {
+                    "type": "label",
+                    "title": ""
+                },
+                {
                     "type": "text",
                     "key": "dhir-nginx-app-name"
+                },
+                {
+                    "type": "select",
+                    "key": "dhir_nginx_mem"
+                },
+                {
+                    "type": "select",
+                    "key": "dhir_nginx_count"
                 },
                 {
                     "type": "label",
@@ -339,19 +542,50 @@
                 },
                 {
                     "type": "label",
-                    "title": {
-                        "$ref": "#/messages/deploy.appName.server"
-                    }
+                    "title": ""
+                },
+                {
+                    "type": "label",
+                    "title": ""
                 },
                 {
                     "type": "text",
                     "key": "kibana-app-name"
                 },
-                
+                {
+                    "type": "select",
+                    "key": "icon_kibana_mem"
+                },
+                {
+                    "type": "select",
+                    "key": "icon_kibana_count"
+                },
+                {
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/deploy.appName.server"
+                    }
+                },
+                {
+                    "type": "label",
+                    "title": ""
+                },
+                {
+                    "type": "label",
+                    "title": ""
+                },
                 {
                     "type": "text",
                     "readonly": false,
                     "key": "server-app-name"
+                },
+                {
+                    "type": "select",
+                    "key": "backend_mem"
+                },
+                {
+                    "type": "select",
+                    "key": "bakcend_count"
                 },
                 {
                     "type": "label",
@@ -361,17 +595,49 @@
                 },
                 {
                     "type": "label",
-                    "title": {
-                        "$ref": "#/messages/deploy.appName.clamav"
-                    }
+                    "title": ""
+                },
+                {
+                    "type": "label",
+                    "title": ""
                 },
                 {
                     "type": "text",
                     "key": "server-worker-app-name"
                 },
                 {
+                    "type": "select",
+                    "key": "backend_worker_mem"
+                },
+                {
+                    "type": "select",
+                    "key": "backend_worker_count"
+                },
+                {
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/deploy.appName.clamav"
+                    }
+                },
+                {
+                    "type": "label",
+                    "title": ""
+                },
+                {
+                    "type": "label",
+                    "title": ""
+                },
+                {
                     "type": "text",
                     "key": "clamav-app-name"
+                },
+                {
+                    "type": "select",
+                    "key": "icon_clamav_mem"
+                },
+                {
+                    "type": "select",
+                    "key": "icon_clamav_count"
                 }
             ]
         },

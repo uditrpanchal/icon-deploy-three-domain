@@ -217,5 +217,17 @@ form:
       tz: 'America/Toronto'
       PHUs: ''
       customPHUs: ''
+      frontend_mem: ''
+      frontend_count: ''
+      backend_mem: ''
+      backend_count: ''
+      backendend_worker_mem: ''
+      backend_worker_count: ''
+      icon_clamav_mem: ''
+      icon_clamav_count: ''
+      dhir_nginx_mem: ''
+      dhir_nginx_count: ''
+      icon_kibana_mem: ''
+      icon_kibana_count: ''
     schema:
       $ref: deploy.json
