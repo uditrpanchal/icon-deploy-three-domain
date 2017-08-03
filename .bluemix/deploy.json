@@ -136,20 +136,19 @@
              "title": "Source repository URL",
         "description": "Type the URL of the repository that you are forking or cloning.",
         "type": "string",
-        "value":"gbhu",
-        "enum":["gbhu"]
+        "value":"gbhu"
         },"second":{
              "title": "Source repository URL",
         "description": "Type the URL of the repository that you are forking or cloning.",
         "type": "string",
-        "value":"peel",
-        "enum": ["peel"]
+        "value":"peel"
+     
         },"full":{
              "title": "Source repository URL",
         "description": "Type the URL of the repository that you are forking or cloning.",
         "type": "string",
-        "value":"rowphu",
-        "enum":["rowphu"]
+        "value":"rowphu"
+      
         }
 
 
@@ -200,8 +199,8 @@
                             
                             {
                                 "key":"first",
-                                "type":"text",
-                                "readonly":true
+                                "type":"label"
+                             
                         }
                            
                         ]
@@ -213,8 +212,8 @@
                             
                             {
                                 "key":"second",
-                                "type":"text",
-                                "readonly":true
+                                "type":"label"
+                                
                         }
                            
                         ]
@@ -227,8 +226,8 @@
     
                             {
                                 "key":"full",
-                                "type":"text",
-                                "readonly":true
+                                "type":"label"
+                            
                         }
                            
                         ]
