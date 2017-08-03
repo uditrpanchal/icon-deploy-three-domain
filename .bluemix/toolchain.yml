@@ -61,6 +61,7 @@ services:
           ICON_SERVER_NAME: '{{form.pipeline.parameters.server-app-name}}'
           HOSTNAMES: '{{form.pipeline.parameters.front_end_hostnames}}'
           FRONT_END_DOMAIN: '{{form.pipeline.parameters.front_end_domain}} '
+          PHUs: '{{form.pipeline.parameters.PHUs}} '
       execute: false
   icon-r2-dhir-nginx-repo:
     service_id: githubpublic
@@ -214,6 +215,6 @@ form:
       front_end_hostnames: ''
       front_end_domain: ''
       tz: 'America/Toronto'
-      onBoard: ''
+      PHUs: ''
     schema:
       $ref: deploy.json

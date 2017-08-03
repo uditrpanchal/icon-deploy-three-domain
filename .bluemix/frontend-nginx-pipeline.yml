@@ -32,6 +32,9 @@ stages:
   - name: FRONT_END_DOMAIN
     type: text
     value: ${FRONT_END_DOMAIN}
+  - name: PUHs
+    type: text
+    value: ${PHUs}
   triggers:
   - type: stage
   jobs:
